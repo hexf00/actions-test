@@ -1,0 +1,11 @@
+name: Curl
+on: [push]
+
+jobs:
+  curl:
+    runs-on: ubuntu-latest
+    steps:
+    - name: whichCurl
+      run: which curl
+    - name: curl
+      run: curl https://baidu.com
