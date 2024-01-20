@@ -15,8 +15,8 @@ jobs:
         run: |
           git config user.email "ci-bot@git.com"
           git config user.name "ci-bot"      
-          git tag -a v10 -m "Version 10.x.0 created by GitHub Actions"
-          git push origin v10
+          git tag -a v10 -m "Version 10.x.0 created by GitHub Actions" --force
+          git push origin v10 --force
       # - name: Auto tag
       #   uses: mathieudutour/github-tag-action@v6.1
       #   with:
