@@ -1,0 +1,17 @@
+name: private action test
+on: [workflow_dispatch]
+jobs:
+  print:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print
+        run: pwd
+      - name: print
+        run: ls -al
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.inputs.branch }}
+      - uses: ./actions/custom curl.yml
+        with:
+          url: 'https://www.google.com'
+      
