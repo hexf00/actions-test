@@ -7,4 +7,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Private actions test
-      uses: hexf00/actions-test-private@v1
+      uses: hexf00/private-actions-test@v1
