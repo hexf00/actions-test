@@ -12,5 +12,7 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - run: |
-        curl -X ${{ inputs.method }} ${{ inputs.url }}
+    - name: Run a script
+      shell: bash  # 指定 shell 属性
+      run: |
+          curl -X ${{ inputs.method }} ${{ inputs.url }}
