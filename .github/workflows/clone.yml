@@ -9,7 +9,8 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
       with:
-        repository: hexf00/actions-test  # 将 owner/repo 替换为您要克隆的仓库的所有者和名称
-
+        repository: hexf00/ioc-di-examples  # 将 owner/repo 替换为您要克隆的仓库的所有者和名称
+   - name: Show Git version
+      run: ls -al
     - name: Show Git version
       run: git --version
