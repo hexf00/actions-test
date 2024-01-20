@@ -1,6 +1,6 @@
 name: Git Clone and Version
 
-on: [push]
+on: [workflow_dispatch]
 
 jobs:
   git-clone-and-version:
