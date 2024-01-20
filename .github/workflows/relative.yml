@@ -14,8 +14,8 @@ jobs:
       - name: print
         run: ls -al
       - name: cat
-        run: cat ./actions/custom curl.yml
-      - uses: ./actions/custom curl.yml
+        run: cat ./actions/customCurl.yml
+      - uses: ./actions/customCurl.yml
         with:
           url: 'https://www.google.com'
       
