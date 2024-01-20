@@ -13,7 +13,7 @@ jobs:
       - name: Auto tag
         uses: mathieudutour/github-tag-action@v6.1
         with:
-          github_token: ${{ secrets.TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
       # - name: Create GitHub release
       #   uses: ncipollo/release-action@v1
       #   with:
