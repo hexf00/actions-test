@@ -7,3 +7,10 @@ jobs:
     steps:
       - run: echo ${{ secrets.DEFIENED_TEST_KEY }}
       - run: echo ${{ secrets.UNDEFINED_KEY }}
+      - run: node -v
+      - run: node -e 'console.log("${{ secrets.DEFIENED_TEST_KEY }}")'
+      - run: node -e 'console.log("${{ secrets.DEFIENED_TEST_KEY }}".length)'
+      - run: node -e 'console.log("${{ secrets.DEFIENED_TEST_KEY }}"[0])'
+      - run: node -e 'console.log("${{ secrets.DEFIENED_TEST_KEY }}"[1])'
+      - run: node -e 'console.log("${{ secrets.DEFIENED_TEST_KEY }}"[2])'
+ 
