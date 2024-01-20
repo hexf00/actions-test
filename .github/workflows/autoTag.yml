@@ -13,6 +13,8 @@ jobs:
         uses: actions/checkout@v2
       - name: Create and push tag
         run: |
+          git config user.email "ci-bot@git.com"
+          git config user.name "ci-bot"      
           git tag -a v10 -m "Version 10.x.0"
           git push origin v10
       # - name: Auto tag
