@@ -1,4 +1,4 @@
-name: private action test
+name: relative action test
 on: [workflow_dispatch]
 jobs:
   print:
