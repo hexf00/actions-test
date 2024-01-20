@@ -1,0 +1,18 @@
+name: Private repository workflow
+
+on: [workflow_dispatch]
+
+jobs:
+  git-clone-and-version:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      with:
+        repository: hexf00/antdv5-bpmn-editor  # 私有库
+        github_token: ${{ secrets.GITHUB_TOKEN }}  # 令牌用于克隆私有仓库。在这里使用默认令牌
+        token: ${{ secrets.GITHUB_TOKEN }}
+    - name: show files
+      run: ls -al
+    - name: Show Git version
+      run: git --version
