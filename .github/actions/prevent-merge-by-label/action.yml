@@ -1,0 +1,24 @@
+name: Prevent Merge by Label
+description: Prevents merging of a pull request if it contains a specific label.
+author: Your Name
+branding:
+  icon: alert-circle
+  color: red
+
+inputs:
+  label:
+    description: 'The label that, when present, prevents the PR from being merged.'
+    required: true
+    default: 'do not merge'
+
+runs:
+  using: 'composite'
+  steps:
+    - run: |
+        if [ -n "$INPUT_LABEL" ]; then
+          if grep -q "$INPUT_LABEL" <<< "$GITHUB_EVENT_PATH"; then
+            echo "Pull request is labeled as '$INPUT_LABEL'"
+            echo "This workflow fails so that the pull request cannot be merged"
+            exit 1
+          fi
+        fi

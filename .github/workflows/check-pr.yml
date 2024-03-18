@@ -1,0 +1,22 @@
+name: 📌 Check Label
+
+on:
+    pull_request:
+        types:
+            - opened
+            - edited
+            - synchronize
+
+permissions:
+    pull-requests: read
+
+jobs:
+    validate:
+        name: validate PR title
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Prevent Merge by Label
+              uses: ./actions/prevent-merge-by-label
+              with:
+                label: 'do not merge'
