@@ -5,7 +5,7 @@ on:
   workflow_call:
 
 concurrency:
-  group: build-image-${{ github.ref }}
+  group: build-image-${{ github.sha }}
   cancel-in-progress: true
 
 jobs:
@@ -16,7 +16,7 @@ jobs:
       - name: get build artifact
         uses: actions/download-artifact@v2
         with:
-          name: ${{ github.ref }}-build.txt
+          name: ${{ github.sha }}-build.txt
           path: build.txt
       
       - name: mock build-image
@@ -25,5 +25,5 @@ jobs:
       - name: upload artifact
         uses: actions/upload-artifact@v2
         with:
-          name: ${{ github.ref }}-build-image.txt
+          name: ${{ github.sha }}-build-image.txt
           path: build-image.txt
