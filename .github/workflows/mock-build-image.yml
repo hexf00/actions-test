@@ -1,0 +1,29 @@
+name: mock build-image
+
+on:
+  workflow_dispatch:
+  workflow_call:
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: get build artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: ${{ github.ref }}-build.txt
+          path: build.txt
+      
+      - name: mock build-image
+        run: sleep 3 && echo "build-iamge-${(cat build.txt)}" > build-image.txt
+      
+      - name: upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ github.ref }}-build-image.txt
+          path: build-image.txt

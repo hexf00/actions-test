@@ -1,0 +1,30 @@
+name: mock deploy1
+
+on:
+  workflow_dispatch:
+  workflow_run:
+  push:
+    branches:
+      - main
+  
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    uses: ./.github/workflows/mock-build.yml
+  build-image:
+    uses: ./.github/workflows/mock-build-image.yml
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: get build-image artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: ${{ github.ref }}-build-image.txt
+          path: build-image.txt
+      
+      - name: mock deploy2
+        run: echo build-image.txt

@@ -1,0 +1,27 @@
+name: mock build
+
+on:
+  workflow_dispatch:
+  workflow_call:
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: echo ref
+        run: echo ${{ github.ref }}
+      - name: echo sha
+        run: echo ${{ github.sha }}
+        
+      - name: mock build
+        run: sleep 3 && echo "${{ github.sha }}" > build.txt
+      - name: upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ github.ref }}-build.txt
+          path: build.txt
