@@ -6,7 +6,7 @@ on:
 
 concurrency:
   group: build-image-${{ github.sha }}
-  cancel-in-progress: true
+  # cancel-in-progress: true
 
 jobs:
   build:
@@ -20,7 +20,7 @@ jobs:
           path: build.txt
       
       - name: mock build-image
-        run: sleep 3 && echo "build-iamge-${(cat build.txt)}" > build-image.txt
+        run: sleep 3 && echo "build-iamge-$(cat build.txt)" > build-image.txt
       
       - name: upload artifact
         uses: actions/upload-artifact@v2
