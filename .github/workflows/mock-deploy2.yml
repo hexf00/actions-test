@@ -15,9 +15,10 @@ jobs:
     uses: ./.github/workflows/mock-build.yml
   build-image:
     uses: ./.github/workflows/mock-build-image.yml
+    needs: build
   deploy:
     runs-on: ubuntu-latest
-
+    needs: [build-image]
     steps:
       - name: get build-image artifact
         uses: actions/download-artifact@v2
