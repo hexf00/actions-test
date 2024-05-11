@@ -1,4 +1,4 @@
-name: mock deploy1
+name: mock deploy2
 
 on:
   workflow_dispatch:
