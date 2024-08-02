@@ -14,7 +14,7 @@ jobs:
 
     steps:
       - name: get build artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: ${{ github.sha }}-build.txt
           path: build.txt
@@ -23,7 +23,7 @@ jobs:
         run: sleep 3 && echo "build-iamge-$(cat build.txt)" > build-image.txt
       
       - name: upload artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ github.sha }}-build-image.txt
           path: build-image.txt

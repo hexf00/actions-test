@@ -21,7 +21,7 @@ jobs:
     needs: [build-image]
     steps:
       - name: get build-image artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: ${{ github.sha }}-build-image.txt
           path: build-image.txt

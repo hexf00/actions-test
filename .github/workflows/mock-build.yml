@@ -17,11 +17,24 @@ jobs:
         run: echo ${{ github.ref }}
       - name: echo sha
         run: echo ${{ github.sha }}
+
+      - name: tmp
+        run: echo "tmp" > tmp.txt
+      - name: check last build
+        id: check_last_build
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ github.sha }}-build.txt
+          path: build.txt
+        continue-on-error: true
+      
+      # 如果有对应的artifact，就跳过build
+
         
       - name: mock build
         run: sleep 3 && echo "${{ github.sha }}" > build.txt
       - name: upload artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ github.sha }}-build.txt
           path: build.txt
