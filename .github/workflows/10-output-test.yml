@@ -15,11 +15,13 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
+      - name: echo type
+        run: echo ${{ github.event_name }}
       - name: setOutputs
         id: step1
         run: |
           if [ "${{ github.event_name }}" == "repository_dispatch" ]; then
-            echo "::set-output name=msg::${{ github.event.client_payload.msg || github.event.inputs.msg }}"
+            echo "::set-output name=msg::${{ github.event.client_payload.msg || github.event.inputs.msg || 'default' }}"
           else
             echo "::set-output name=msg::${{ github.event.inputs.msg }}"
           fi
