@@ -15,4 +15,4 @@ jobs:
             repository: hexf00/actions-test
             event-type: test
             client-payload: '{"msg":"${{ github.event.inputs.msg }}" }'
-            token: ${{ secrets.GITHUB_TOKEN }}
+            token: ${{ secrets.GH_TOKEN }}
