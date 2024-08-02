@@ -1,0 +1,17 @@
+name: 09-dispatch-other-repo
+on:
+  workflow_dispatch:
+    inputs:
+      msg:
+        description: 'msg'
+        required: false
+        default: 'hello by dispatch other repo'
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+        - uses: peter-evans/repository-dispatch@v2
+          with:
+            repository: hexf00/actions-test
+            event-type: test
+            client-payload: '{"msg":"${{ github.event.inputs.msg }}" }'
