@@ -25,7 +25,6 @@ jobs:
           else
             echo "::set-output name=msg::${{ github.event.inputs.msg }}"
           fi
-        shell: bash
       - name: echo
         run: echo ${{ steps.step1.outputs.msg }}
   
