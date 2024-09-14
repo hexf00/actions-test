@@ -21,6 +21,7 @@ on:
 jobs:
   greet:
     runs-on: ubuntu-latest
+    environment: ${{ github.event.inputs.environment }}
     
     steps:
 
@@ -35,4 +36,4 @@ jobs:
 
     - name: echo vars
       run: echo ${{ vars.TEST }}
-      
+
