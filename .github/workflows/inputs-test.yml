@@ -1,6 +1,9 @@
 name: Mixed inputs
 # https://github.blog/changelog/2021-11-10-github-actions-input-types-for-manual-workflows/
 
+# Using environment in github actions without creating Deployments #36919
+# https://github.com/orgs/community/discussions/36919
+
 on:
   workflow_dispatch:
     inputs:
