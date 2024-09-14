@@ -19,7 +19,7 @@ on:
         type: environment
 
 jobs:
-  greet:
+  build:
     runs-on: ubuntu-latest
     environment: ${{ github.event.inputs.environment }}
     
@@ -37,3 +37,22 @@ jobs:
     - name: echo vars
       run: echo ${{ vars.TEST }}
 
+  deploy:
+    runs-on: ubuntu-latest
+    environment: ${{ github.event.inputs.environment }}
+    
+    steps:
+
+    - name: show inputs
+      run: echo '${{ toJSON(github.event.inputs) }}' | jq .
+
+    - name: Send greeting
+      run: echo "${{ github.event.inputs.message }} ${{ fromJSON('["", "🥳"]')[github.event.inputs.use-emoji == 'true'] }} ${{ github.event.inputs.name }}"
+
+    - name: echo environment
+      run: echo ${{ github.event.inputs.environment }}
+
+    - name: echo vars
+      run: echo ${{ vars.TEST }}
+
+    
