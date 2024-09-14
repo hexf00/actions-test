@@ -32,3 +32,7 @@ jobs:
 
     - name: echo environment
       run: echo ${{ github.event.inputs.environment }}
+
+    - name: echo vars
+      run: echo ${{ vars.TEST }}
+      
