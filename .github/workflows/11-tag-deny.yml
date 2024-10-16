@@ -13,3 +13,11 @@ jobs:
     steps:
       - name: test
         run: echo "test"
+  step2:
+    needs: release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: test
+        run: echo "step2"
+
