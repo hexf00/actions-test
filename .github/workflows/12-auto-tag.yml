@@ -19,5 +19,8 @@ jobs:
       - name: 打tag
         run: |
           git tag -a ${{ steps.step1.outputs.version }} -m "Release ${{ steps.step1.outputs.version }}"
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
           git push origin ${{ steps.step1.outputs.version }}
+      
 
