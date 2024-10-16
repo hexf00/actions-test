@@ -1,0 +1,21 @@
+# 实现一个自动打tag的workflow
+
+name: 12-auto-tag
+on:
+  workflow_dispatch:
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: test
+        id: step1
+        run: |
+          original_version="1.0.0"
+          version_number=$(echo "$original_version" | sed -E 's/^([0-9]+\.[0-9]+\.[0-9]+).*$/\1/')
+          echo "version=$version_number-nightly.$(date +%Y%m%d%H%M)" >> $GITHUB_OUTPUT
+      - name: 打tag
+        run: |
+          git tag -a ${{ steps.step1.outputs.version }} -m "Release ${{ steps.step1.outputs.version }}"
+          git push origin ${{ steps.step1.outputs.version }}
+
